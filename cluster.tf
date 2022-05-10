@@ -5,20 +5,20 @@
 # provider = aws.viginia [us-east-1] default
 
 resource "aws_eks_cluster" "cc-eks-cluster" {
-  name                      = var.cluster-name
-  role_arn                  = var.role-eks-cluster-control-plane
+  name                      = var.cluster_name
+  role_arn                  = var.role_eks_cluster_control_plane
   enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   vpc_config {
-    security_group_ids      = [var.sg-cluster-control-plane]
-    subnet_ids              = [var.private-subnets[0], var.private-subnets[1]]
+    security_group_ids      = [var.sg_cluster_control_plane]
+    subnet_ids              = [var.private_subnets[0], var.private_subnets[1]]
     endpoint_private_access = true
     endpoint_public_access  = true
   }
 }
 
 resource "aws_cloudwatch_log_group" "cc-log-group-eks" {
-  name              = "/aws/eks/${var.cluster-name}/cc-lg-${var.cluster-name}"
+  name              = "/aws/eks/${var.cluster_name}/cc-lg-${var.cluster_name}"
   retention_in_days = 7
 }
 

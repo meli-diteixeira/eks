@@ -1,71 +1,71 @@
 //----------------------- VPC ID  ---------------------------------------------------------//
-variable "vpc-id" {
+variable "vpc_id" {
   type = string
 }
 
 //----------------------- Network ---------------------------------------------------------//
 
-variable "private-subnets" {
+variable "private_subnets" {
   type = list(any)
 }
 
-variable "public-subnets" {
+variable "public_subnets" {
   type = list(any)
 }
 
 //----------------------- EKS Cluster Resources -------------------------------------------//
 
-variable "cluster-name" {
+variable "cluster_name" {
   type = string
 }
 
-variable "instance-type" {
+variable "instance_type" {
   type = string
 }
 
-variable "key-name" {
+variable "key_name" {
   type = string
 }
 
-variable "volume-type" {
+variable "volume_type" {
   type = string
 }
 
-variable "volume-size" {
+variable "volume_size" {
   type = string
 }
 
-variable "min-size" {}
+variable "min_size" {}
 
-variable "max-size" {}
+variable "max_size" {}
 
 //--------------------------------- RESOURCES ROLES --------------------------------------//
 
-variable "kubectl-role-team" {
+variable "kubectl_role_team" {
   default = ""
 }
 
-variable "role-eks-cluster-control-plane" {
+variable "role_eks_cluster_control_plane" {
   default = ""
 }
 
-variable "role-eks-cluster-worker-node" {
+variable "role_eks_cluster_worker_node" {
   default = ""
 }
 
 //--------------------------------- USER K8S MAP SYSTEM:MASTERS -------------------------//
 
-variable "meli-user" {
+variable "meli_user" {
   type    = string
   default = ""
 }
 
 //--------------------------------- SG CLUSTER  ------------------------------------------//
 
-variable "sg-cluster-control-plane" {
+variable "sg_cluster_control_plane" {
   default = ""
 }
 
-variable "sg-cluster-worker-node" {
+variable "sg_cluster_worker_node" {
   default = ""
 }
