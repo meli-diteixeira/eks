@@ -35,37 +35,40 @@ variable "volume_size" {
   type = string
 }
 
-variable "min_size" {}
+variable "min_size" {
+  type = number
+}
 
-variable "max_size" {}
+variable "max_size" {
+  type = number
+}
 
 //--------------------------------- RESOURCES ROLES --------------------------------------//
 
 variable "kubectl_role_team" {
-  default = ""
+  type = string
 }
 
 variable "role_eks_cluster_control_plane" {
-  default = ""
+  type = string
 }
 
 variable "role_eks_cluster_worker_node" {
-  default = ""
+  type = string
 }
 
 //--------------------------------- USER K8S MAP SYSTEM:MASTERS -------------------------//
 
 variable "meli_user" {
   type    = string
-  default = ""
 }
 
 //--------------------------------- SG CLUSTER  ------------------------------------------//
 
 variable "sg_cluster_control_plane" {
-  default = ""
+  type = string
 }
 
 variable "sg_cluster_worker_node" {
-  default = ""
+  type = string
 }
