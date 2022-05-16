@@ -3,7 +3,7 @@
 resource "aws_eks_node_group" "cc-ng-on-demand-instance" {
   cluster_name    = var.cluster_name
   node_group_name = "${var.cluster_name}-cc-ng-on-demand-instance"
-  node_role_arn   = var.role_eks_cluster_worker_node
+  node_role_arn   = "arn:aws:iam::${var.account_id}:role/role-eks-cluster-worker-node"
   subnet_ids      = var.private_subnets
   instance_types  = [var.instance_type]
   disk_size       = var.volume_size
