@@ -9,13 +9,11 @@ variable "vpc_id" {
 }
 
 //----------------------- Network ---------------------------------------------------------//
-
 variable "private_subnets" {
   type = list(any)
 }
 
 //----------------------- EKS Cluster Resources -------------------------------------------//
-
 variable "cluster_name" {
   type = string
 }
