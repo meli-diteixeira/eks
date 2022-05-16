@@ -14,10 +14,6 @@ variable "private_subnets" {
   type = list(any)
 }
 
-variable "public_subnets" {
-  type = list(any)
-}
-
 //----------------------- EKS Cluster Resources -------------------------------------------//
 
 variable "cluster_name" {
