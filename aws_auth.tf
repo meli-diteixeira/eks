@@ -16,12 +16,12 @@ resource "kubernetes_config_map" "cc-aws-auth-configmap" {
   }
   data = {
     mapRoles = <<YAML
-      - rolearn: ${var.role_eks_cluster_worker_node}
+      - rolearn: "arn:aws:iam::${var.account_id}:role/role-eks-cluster-control-plane"
         username: system:node:{{EC2PrivateDNSName}}
         groups:
           - system:bootstrappers
           - system:nodes
-      - rolearn: ${var.kubectl_role_team}
+      - rolearn: "arn:aws:iam::${var.account_id}:role/${var.kubectl_role_team}"
         username: ${var.meli_user}
         groups:
           - system:masters
