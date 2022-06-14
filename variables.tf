@@ -64,7 +64,7 @@ variable "enabled_cluster_log_types" {
 variable "endpoint_private_access" {
   type        = bool
   description = "Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default to AWS EKS resource and it is false"
-  default     = false
+  default     = true
 }
 
 variable "endpoint_public_access" {
