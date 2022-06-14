@@ -14,7 +14,6 @@ resource "aws_eks_cluster" "cc-eks-cluster" {
     subnet_ids              = var.private_subnets
     endpoint_private_access = var.endpoint_private_access
     endpoint_public_access  = var.endpoint_public_access
-    public_access_cidrs     = var.public_access_cidrs
   }
 }
 
