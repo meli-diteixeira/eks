@@ -56,10 +56,42 @@ variable "role_eks_cluster_worker_node" {
   type = string
 }
 
+variable "enabled_cluster_log_types" {
+  type    = list(string)
+  default = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+}
+
+variable "endpoint_private_access" {
+  type        = bool
+  description = "Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default to AWS EKS resource and it is false"
+  default     = false
+}
+
+variable "endpoint_public_access" {
+  type        = bool
+  description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default to AWS EKS resource and it is true"
+  default     = true
+}
+
+variable "public_access_cidrs" {
+  type = list(string)
+  default = [
+    "10.13.160.0/22",  # MELICIDADE 01
+    "10.195.8.0/22",   # MELICIDADE 02
+    "10.195.208.0/21", # CX LAND 01, 02
+    "10.195.224.0/20", # EQUINIX 01, 02
+    "10.20.160.0/21",  # POLODOT 01, 02
+    "10.195.24.0/21",  # POLODOT 03
+    "10.195.176.0/22", # MEDELLIN 01, 02
+    "10.14.160.0/24"   # BOGOTA 01
+  ]
+  description = "Indicates which CIDR blocks can access the Amazon EKS public API server endpoint when enabled."
+}
+
 //--------------------------------- USER K8S MAP SYSTEM:MASTERS -------------------------//
 
 variable "meli_user" {
-  type    = string
+  type = string
 }
 
 //--------------------------------- SG CLUSTER  ------------------------------------------//
