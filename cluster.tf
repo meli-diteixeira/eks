@@ -6,7 +6,7 @@
 
 resource "aws_eks_cluster" "cc-eks-cluster" {
   name                      = var.cluster_name
-  role_arn                  = var.role_eks_cluster_control_plane
+  role_arn                  = "arn:aws:iam::${var.account_id}:role/role-eks-cluster-control-plane"
   enabled_cluster_log_types = var.enabled_cluster_log_types
 
   vpc_config {
