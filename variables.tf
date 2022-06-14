@@ -48,14 +48,6 @@ variable "kubectl_role_team" {
   type = string
 }
 
-variable "role_eks_cluster_control_plane" {
-  type = string
-}
-
-variable "role_eks_cluster_worker_node" {
-  type = string
-}
-
 variable "enabled_cluster_log_types" {
   type    = list(string)
   default = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
