@@ -6,8 +6,8 @@
 
 resource "aws_eks_cluster" "cc-eks-cluster" {
   name                      = var.cluster_name
-  role_arn                  = var.role_eks_cluster_control_plane
-  enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+  role_arn                  = "arn:aws:iam::${var.account_id}:role/role-eks-cluster-control-plane"
+  enabled_cluster_log_types = var.enabled_cluster_log_types
 
   tags = {
     Criticality = var.criticality
@@ -16,8 +16,8 @@ resource "aws_eks_cluster" "cc-eks-cluster" {
   vpc_config {
     security_group_ids      = [var.sg_cluster_control_plane]
     subnet_ids              = var.private_subnets
-    endpoint_private_access = true
-    endpoint_public_access  = true
+    endpoint_private_access = var.endpoint_private_access
+    endpoint_public_access  = var.endpoint_public_access
   }
 }
 

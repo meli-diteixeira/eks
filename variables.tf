@@ -52,18 +52,27 @@ variable "kubectl_role_team" {
   type = string
 }
 
-variable "role_eks_cluster_control_plane" {
-  type = string
+variable "enabled_cluster_log_types" {
+  type    = list(string)
+  default = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 }
 
-variable "role_eks_cluster_worker_node" {
-  type = string
+variable "endpoint_private_access" {
+  type        = bool
+  description = "Indicates whether or not the Amazon EKS private API server endpoint is enabled. Default to AWS EKS resource and it is false"
+  default     = true
+}
+
+variable "endpoint_public_access" {
+  type        = bool
+  description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled. Default to AWS EKS resource and it is true"
+  default     = false
 }
 
 //--------------------------------- USER K8S MAP SYSTEM:MASTERS -------------------------//
 
 variable "meli_user" {
-  type    = string
+  type = string
 }
 
 //--------------------------------- SG CLUSTER  ------------------------------------------//
