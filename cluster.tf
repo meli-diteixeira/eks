@@ -9,6 +9,10 @@ resource "aws_eks_cluster" "cc-eks-cluster" {
   role_arn                  = var.role_eks_cluster_control_plane
   enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
+  tags = {
+    Criticality = var.criticality
+  }
+
   vpc_config {
     security_group_ids      = [var.sg_cluster_control_plane]
     subnet_ids              = var.private_subnets
@@ -20,6 +24,10 @@ resource "aws_eks_cluster" "cc-eks-cluster" {
 resource "aws_cloudwatch_log_group" "cc-log-group-eks" {
   name              = "/aws/eks/${var.cluster_name}/cc-lg-${var.cluster_name}"
   retention_in_days = 7
+
+  tags = {
+    Criticality = var.criticality
+  }
 }
 
 output "endpoint" {

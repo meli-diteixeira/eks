@@ -18,6 +18,10 @@ variable "cluster_name" {
   type = string
 }
 
+variable "criticality" {
+  type = string
+}
+
 variable "instance_type" {
   type = string
 }

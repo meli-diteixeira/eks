@@ -8,6 +8,10 @@ resource "aws_eks_node_group" "cc-ng-on-demand-instance" {
   instance_types  = [var.instance_type]
   disk_size       = var.volume_size
 
+  tags = {
+    Criticality = var.criticality
+  }
+
   depends_on = [
     aws_eks_cluster.cc-eks-cluster,
   ]
